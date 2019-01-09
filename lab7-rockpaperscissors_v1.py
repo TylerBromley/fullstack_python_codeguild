@@ -2,10 +2,12 @@
 
 import random
 
-
+# get the player's choice and create a random choice for the
+# computer
 player_choice = input("Please choose rock, paper or scissors: ")
 computer_choice = random.choice(("rock", "paper", "scissors"))
 
+# test whether the player won, lost or tied
 if player_choice == computer_choice:
 	print("It's a tie!")
 elif player_choice == "rock": 

@@ -2,9 +2,11 @@
 
 import random
 
+# get a random number
 number = random.randint(1, 10)
-print(number)
 
+# let the user guess as many times as it takes, but each
+# time, let them know if they are too high or too low
 while True:
 	user_num = int(input("Please guess a number between 1 and 10: "))
 

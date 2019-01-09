@@ -2,11 +2,14 @@
 
 import random
 
+# get a random number
 number = random.randint(1, 10)
-print(number)
 
+# store the previous guess
 last_guess = 0
 
+# let the user guess until they get it right
+# give them hints if they are getting warmer or colder
 while True:
 	user_num = int(input("Please guess a number between 1 and 10: "))
 	print(last_guess)

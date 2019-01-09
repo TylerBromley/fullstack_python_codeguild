@@ -2,6 +2,7 @@
 
 import random
 
+# create a list of 8-ball responses
 prediction_list = [
 	"It is certain",
 	"It is decidedly so",
@@ -27,13 +28,17 @@ prediction_list = [
 
 print("\nWelcome, user!")
 
+# loop until users says no
 while True:
-
+	# have the user ask a question
 	user_question = input("Please ask the magic 8-ball a question: ")
+	# get a random answer from prediction_list
 	answer = random.choice(prediction_list)
+	# print the answer
 	print('\n' + answer)
+	# ask whether they want to play again
 	again_question = input("\nWould you like to play again? ")
-
+	# if not, quit
 	if again_question.lower().startswith('n'):
 		print("\nGoodbye!")
 		break

@@ -1,14 +1,17 @@
 # lab9-unit-converter_v4.py
 
+# get the user's distance, sans unit of measure
 distance = float(input("What is the distance? "))
+# ask for in an out units, but restrict the way they can be entered to numbers
 in_unit = int(input("What is the input unit? Please enter\n\t[1] for feet\n\t" +
                 "[2] for miles\n\t[3] for kilometers\n\t[4] for meters\n> "))
 out_unit = int(input("What is the output unit? Please enter\n\t[1] for feet\n" +
                 "\t[2] for miles\n\t[3] for kilometers\n\t[4] for meters\n> "))
 
-
+# create a global meters variable
 meters = 0
 
+# convert the input to meters
 def convert_to_meters(distance, in_unit):
     global meters
     if in_unit == 1:
@@ -20,6 +23,7 @@ def convert_to_meters(distance, in_unit):
     elif in_unit == 4:
         meters = distance
 
+# convert the output to the user's chosen unit of measure
 def convert_to_output(out_unit):
     global meters
     if out_unit == 1:
@@ -31,9 +35,11 @@ def convert_to_output(out_unit):
     elif out_unit == 4:
         meters = meters
 
+# call the functions
 convert_to_meters(distance, in_unit)
 convert_to_output(out_unit)
 
+# create a unit dictionary for printing
 units = {
     1 : "ft",
     2 : "mi",
@@ -41,30 +47,12 @@ units = {
     4 : "m",
 }
 
+# set in_unit and out_unit to string from units dictionary
 if in_unit in units:
     in_unit = units[in_unit]
 
 if out_unit in units:
     out_unit = units[out_unit]
 
-
+# print the conversion
 print(f"{distance} {in_unit} is {meters} {out_unit}")
-"""
-def convert_meters_to_out_units():
-if out_units.startswith("f"):
-    meters = round(meters / METER_CONST, 4)
-    out_units = "ft"
-elif out_units.startswith("mi"):
-    meters = round(meters / 5280, 4)
-    out_units = "m"
-
-elif out_units.startswith("k"):
-    meters = round(meters * 1000, 4)
-    out_units = "km"        
-else:
-    meters = meters
-    out_units = "m"
-
-
-print(f"{int(distance)} {in_units} is {meters} {out_units}")
-"""

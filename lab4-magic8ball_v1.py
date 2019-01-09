@@ -2,6 +2,7 @@
 
 import random
 
+# create a list of 8-ball responses
 prediction_list = [
 	"It is certain",
 	"It is decidedly so",
@@ -25,6 +26,9 @@ prediction_list = [
 	"Very doubtful",
 ]
 
+# have the user ask a question
 user_question = input("Please ask the magic 8-ball a question: ")
+# get a random answer from the prediction_list
 answer = random.choice(prediction_list)
+# print that answer
 print(answer)
