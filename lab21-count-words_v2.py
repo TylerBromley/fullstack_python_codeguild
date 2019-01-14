@@ -3,7 +3,7 @@
 import string
 
 translator = str.maketrans("", "", string.punctuation)
-with open('heart-of-darkness.txt') as f:
+with open('a-modest-proposal.txt') as f:
 	word_list = f.read().lower().translate(translator).split()
 
 def get_bigrams(word_list):
@@ -15,7 +15,6 @@ def get_bigrams(word_list):
 	bigram_dict = dict(zip(bigram_list, bigram_count))
 	bigrams = list(bigram_dict.items())
 	bigrams.sort(key=lambda tup: tup[1], reverse=True)
-	for i in range(min(10, len(bigrams))):
-		print(bigrams[i])
+	return [bigrams[i] for i in range(min(10, len(bigrams)))]
 
-get_bigrams(word_list)
+print(get_bigrams(word_list))

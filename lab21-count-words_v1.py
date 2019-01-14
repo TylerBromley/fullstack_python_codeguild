@@ -3,7 +3,7 @@
 import string
 
 translator = str.maketrans("", "", string.punctuation)
-with open('heart-of-darkness.txt') as f:
+with open('a-modest-proposal.txt') as f:
 	word_list = f.read().lower().translate(translator).split()
 
 def get_word_count(word_list):

@@ -52,7 +52,7 @@ print(double_letters('hello'))
 # Write a function using random.randint to generate an index, use that index
 # to pick a random element of a list and return it.
 def random_element(fruit):
-	return fruit[random.randint(0, len(a)-1)]
+	return fruit[random.randint(0, len(fruit)-1)]
 
 fruits = ['apples', 'bananas', 'pears']
 print(random_element(fruits))
@@ -67,7 +67,24 @@ prices = [1.2, 3.3, 2.1]
 
 print(combine_dict(fruits, prices))
 
+# lists - problem three
 
+def eveneven(nums):
+	evens = [i for i in nums if i % 2 == 0]
+	return len(evens) % 2 == 0
+		
+print(eveneven([5, 6, 2]))
+print(eveneven([5, 5, 2]))
+
+# comprehensions - problem 1
+powers_of_2 = [2**i for i in range(10)]
+print(powers_of_2)
+
+def powers(n, r):
+	return [n**i for i in range(r)]
+
+print(powers(2, 20))
+print(powers(4, 10))
 
 
 
