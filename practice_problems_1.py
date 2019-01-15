@@ -86,6 +86,22 @@ def powers(n, r):
 print(powers(2, 20))
 print(powers(4, 10))
 
+# comprehensions - problem 3
+first_dict = {1: 'a', 2: 'b'}
+swapped = {k:v for (v, k) in first_dict.items()}
+
+print(swapped)
+
+# strings - problem 2
+def missing_char(word):
+	# char_list = []
+	return [word[:i] + word[i+1:] for i in range(len(word))] 
+	# for i in range(len(word)):
+	# 	char_list.append(word[:i] + word[i+1:])
+	# return char_list
+
+print(missing_char("kitten"))
+
 
 
 
