@@ -7,7 +7,7 @@ def create(username, contacts, keys):
     user_row.append(input("Please enter your favorite color: "))
     user_row = dict(zip(keys, user_row))
     contacts.append(user_row)
-    return contacts
+    return header, contacts
 
 def read(username, contacts):
     for i in contacts:

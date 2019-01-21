@@ -1,5 +1,6 @@
 # practice_problem_1.py
 import random
+import itertools
 
 def is_even(a):
 	return a % 2 == 0
@@ -94,15 +95,83 @@ print(swapped)
 
 # strings - problem 2
 def missing_char(word):
-	# char_list = []
 	return [word[:i] + word[i+1:] for i in range(len(word))] 
-	# for i in range(len(word)):
-	# 	char_list.append(word[:i] + word[i+1:])
-	# return char_list
 
 print(missing_char("kitten"))
 
+# strings - problem 3
+def latest_letter(word):
+	letters = sorted(word)
+	return letters[-1]
+
+print(latest_letter('pneumonoultramicroscopicsilicovolcanoconiosis'))
+
+# lists - problem 7
+nums1 = [1, 5, 9, 7, 3]
+nums2 = [2, 5, 3, 8, 4]
+
+def common_elements(nums1, nums2):
+	# return [i for i in nums1 if i in nums2]
+	return list(set(nums1) & set(nums2)) # '&' finds the intersection
+
+print(common_elements(nums1, nums2))
+
+# lists - problem 8
+def combine(nums1, nums2):
+	#return [i for i in itertools.chain.from_iterable(zip(nums1, nums2))]
+	return [i for j in zip(nums1, nums2) for i in j] #[:-1]
+	# combined = []
+	# for i in list1:
+	# 	combined.append(nums1[i])
+	# 	combined.append(nums2[i])
+	# return combined
+
+print(combine(['a','b','c'],[1,2,3]))
+	
+
+# Lists - problem 13
+def minimum(nums):
+	nums.sort(reverse=True)
+	return nums.pop()
+
+	running_min = float('inf')
+	for num in nums:
+		if num < running_min:
+			running_min = num
+	return running_min
+
+def maximum(nums):
+	nums.sort()
+	return nums.pop()
+
+	running_max = float('-inf')
+	for num in nums:
+		if num > running_max:
+			running_max = num
+	return running_max
+
+def mean(nums):
+	total = 0
+	for i in nums:
+		total += i
+	return total / len(nums)
+
+def mode(nums):
+	count = {}
+	for num in nums:
+		if num not in count:
+			count[num] = 1
+		else:
+			count[num] += 1
+	return max(count.items(), key=lambda x:x[1])[0]
+
+	
 
 
+	
 
+print(minimum([9, 8, 3, 7, 2, 6, 5, 4]))
+print(maximum([9, 8, 3, 7, 2, 6, 5, 4]))
+print(mean([9, 8, 3, 7, 2, 6, 5, 4]))
+print(mode([2,2,4,3]))
 

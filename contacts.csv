@@ -1,7 +1,3 @@
-name,favorite fruit,favorite color
-Aaron,apples,red
-Angela,strawberries,blue
-Brody,raspberries,yellow
-Candice,oranges,green
-Carlos,grapes,pink
-Tyler,berries,blue
+name,age,job,phone,email
+Aaron,35,lawyer,555-5555,aaron@example.com
+Candace,journalist,555-5556,candace@example.com
