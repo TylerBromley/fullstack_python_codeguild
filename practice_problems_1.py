@@ -1,6 +1,8 @@
 # practice_problem_1.py
 import random
 import itertools
+from functools import reduce
+from collections import Counter
 
 def is_even(a):
 	return a % 2 == 0
@@ -28,7 +30,6 @@ def maximum_of_three(a, b, c):
 	max3 = print(max(a, b, c))
 	return max3
 
-
 maximum_of_three(5, 6, 2)
 maximum_of_three(-4, 3, 10)
 
@@ -38,7 +39,6 @@ def powers_of_2():
 
 powers_of_2()
 
-
 # Get a string from the user, print out another string, doubling every letter.
 def double_letters(x):
 	new_string = ""
@@ -47,8 +47,6 @@ def double_letters(x):
 	return new_string
 
 print(double_letters('hello'))
-
-
 
 # Write a function using random.randint to generate an index, use that index
 # to pick a random element of a list and return it.
@@ -120,11 +118,6 @@ print(common_elements(nums1, nums2))
 def combine(nums1, nums2):
 	#return [i for i in itertools.chain.from_iterable(zip(nums1, nums2))]
 	return [i for j in zip(nums1, nums2) for i in j] #[:-1]
-	# combined = []
-	# for i in list1:
-	# 	combined.append(nums1[i])
-	# 	combined.append(nums2[i])
-	# return combined
 
 print(combine(['a','b','c'],[1,2,3]))
 	
@@ -164,14 +157,38 @@ def mode(nums):
 		else:
 			count[num] += 1
 	return max(count.items(), key=lambda x:x[1])[0]
-
-	
-
-
 	
 
 print(minimum([9, 8, 3, 7, 2, 6, 5, 4]))
 print(maximum([9, 8, 3, 7, 2, 6, 5, 4]))
 print(mean([9, 8, 3, 7, 2, 6, 5, 4]))
 print(mode([2,2,4,3]))
+
+# lists - problem 11
+nums = [[5,2,3],[4,5,1],[7,6,3]]
+def combine_all(nums):
+	return [j for i in range(len(nums)) for j in nums[i]]
+
+	# using reduce:
+	# return reduce(lambda x, y: x+y, nums)
+
+print(combine_all(nums))
+
+# strings - problem 6
+def count_letter(letter, word):
+	count = 0
+	for i in list(word):
+		if i == letter:
+			count += 1
+	return count
+
+print(count_letter('i', 'antidisestablishmentterianism'))
+print(count_letter('p', 'pneumonoultramicroscopicsilicovolcanoconiosis'))
+
+
+
+
+
+
+
 

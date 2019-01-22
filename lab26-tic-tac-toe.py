@@ -15,7 +15,7 @@ class Game:
         self.count = 0
     # print the board to resemble tic-tac-toe
     def __repr__(self):
-        return f"{self.board[0][0]}|{self.board[0][1]}|{self.board[0][2]}\n{self.board[1][0]}|{self.board[1][1]}|{self.board[1][2]}\n{self.board[2][0]}|{self.board[2][1]}|{self.board[2][2]}"
+        print(f"{self.board[0][0]}|{self.board[0][1]}|{self.board[0][2]}\n{self.board[1][0]}|{self.board[1][1]}|{self.board[1][2]}\n{self.board[2][0]}|{self.board[2][1]}|{self.board[2][2]}")
     # replace the user-selected number with user token "X" or "O"
     def move(self, n, player):
         for i in range(len(self.board)):
