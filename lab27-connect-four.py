@@ -1,12 +1,14 @@
 # lab27-connect-four.py
 
 class Player:
+    """ A connect4 player """
     def __init__(self, name, color):
         self.name = name
         self.color = color
 
 
 class Game:
+    """ A game of Connect4 """
     def __init__(self):
         self.board = [
                       [" ", " ", " ", " ", " ", " ", " "],
@@ -16,6 +18,7 @@ class Game:
                       [" ", " ", " ", " ", " ", " ", " "],
                       [" ", " ", " ", " ", " ", " ", " "]]
 
+    # print the board representation
     def __repr__(self):
         nums = "  1   2   3   4   5   6   7  "
         base = "-----------------------------"
@@ -24,6 +27,7 @@ class Game:
             line += f"| {self.board[i][0]} | {self.board[i][1]} | {self.board[i][2]} | {self.board[i][3]} | {self.board[i][4]} | {self.board[i][5]} | {self.board[i][6]} |\n"
         return f"\n{nums}\n{line}{base}"
 
+    # return the remaining free space in a column
     def get_height(self, position):
         height = 0
         col = [r[position-1] for r in self.board]
@@ -31,7 +35,8 @@ class Game:
             if i != " ":
                 height += 1
         return height
-        
+
+    # add player color to the next open row of the column
     def move(self, player, position):
         place = self.get_height(position)
         if place > 0:
@@ -41,6 +46,7 @@ class Game:
             new_val = len(self.board) - 1
         self.board[new_val][position-1] = player.color
 
+    # check for four-in-a-row
     def calc_winner(self):
         # rows
         for i in range(len(self.board)):
@@ -69,6 +75,7 @@ class Game:
                         if self.board[i][j] == self.board[i-1][j-1] == self.board[i-2][j-2] == self.board[i-3][j-3]:
                             return self.board[i][j]
 
+    # determine if game board is full
     def is_full(self):
         count = 0
         for i in range(len(self.board)):
@@ -78,6 +85,7 @@ class Game:
         if count == 42:
             return True
 
+    # return true if board is full or a player has won
     def is_game_over(self):
         if self.is_full() == True:
             print("It's a draw!")
@@ -92,6 +100,7 @@ class Game:
 
 def main():
     while True:
+        # Establish player 1 and player 2 or exit the game
         message = input("Welcome To Connect4!\nType [P] to play or [Q] to quit: ").strip().lower()
         if message.startswith("q"):
             break

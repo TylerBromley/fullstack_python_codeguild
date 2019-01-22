@@ -1,11 +1,13 @@
 # lab27-connect-four_v1.py
 class Player:
+    """ A connect4 player """
     def __init__(self, name, color):
         self.name = name
         self.color = color
 
 
 class Game:
+    """ A game of Connect4 """
     def __init__(self):
         self.board = [
                       [" ", " ", " ", " ", " ", " ", " "],
@@ -15,6 +17,7 @@ class Game:
                       [" ", " ", " ", " ", " ", " ", " "],
                       [" ", " ", " ", " ", " ", " ", " "]]
 
+    # print the game board representation
     def __repr__(self):
         nums = "  1   2   3   4   5   6   7  "
         base = "-----------------------------"
@@ -30,16 +33,17 @@ class Game:
             if i != " ":
                 height += 1
         return height
-        
+
+    # send the player's token to the bottom of the column
     def move(self, player, position):
         place = self.get_height(position)
         if place > 0:
             new_val = 5 - place
-            #print(new_val)
         else:
             new_val = len(self.board) - 1
         self.board[new_val][position-1] = player.color
 
+    # determine if a player has four in a row (horiz, vert or diag)
     def calc_winner(self):
         # rows
         for i in range(len(self.board)):
@@ -48,6 +52,7 @@ class Game:
                     if self.board[i][j] != " ":
                         if self.board[i][j] == self.board[i][j+1] == self.board[i][j+2] == self.board[i][j+3]:
                             return self.board[i][j]
+
         # columns
         for i in range(len(self.board)):
                 for j in range(len(self.board[i])):
@@ -68,6 +73,7 @@ class Game:
                         if self.board[i][j] == self.board[i-1][j-1] == self.board[i-2][j-2] == self.board[i-3][j-3]:
                             return self.board[i][j]
 
+    # check if game board is full
     def is_full(self):
         count = 0
         for i in range(len(self.board)):
@@ -76,7 +82,7 @@ class Game:
                     count += 1
         if count == 42:
             return True
-
+    # end game if the game board is full or if someone has won
     def is_game_over(self):
         if self.is_full() == True:
             print("It's a draw!")
@@ -90,6 +96,7 @@ class Game:
 
 
 def main():
+    # open the file with the corresponding moves
     with open('connect-four-moves.txt', 'r') as f:
         lines = f.read()
     total_plays = [lines[i] for i in range(len(lines)) if i % 2 == 0]
@@ -106,6 +113,7 @@ def main():
             player1_plays.append(total_plays[i])
         else:
             player2_plays.append(total_plays[i])
+    # as long as someone hasn't won and the game board isn't full
     while not new_game.is_game_over():
         count1 = 0
         count2 = 0
@@ -119,8 +127,5 @@ def main():
         count2 += 1
         if new_game.is_game_over():
             break
-    # print(total_plays)
-    # print(player1_plays)
-    # print(player2_plays)
 
 main()

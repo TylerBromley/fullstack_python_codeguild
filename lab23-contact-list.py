@@ -1,19 +1,22 @@
 # lab23-contact-list.py
 
+# create a new contact
 def create(username, contacts, keys):
     user_row = []
     user_row.append(username)
-    user_row.append(input("Please enter your favorite fruit: "))
-    user_row.append(input("Please enter your favorite color: "))
+    user_row.append(input("Please enter the contact's favorite fruit: "))
+    user_row.append(input("Please enter the contact's favorite color: "))
     user_row = dict(zip(keys, user_row))
     contacts.append(user_row)
     return header, contacts
 
+# display contacts and info
 def read(username, contacts):
     for i in contacts:
         if i.get("name") == username:
             return i
 
+# change values for contacts
 def update(username, contacts):
     for i in contacts:
         if i["name"] == username:
@@ -23,6 +26,7 @@ def update(username, contacts):
                 i[attribute] = new_value
             return i
 
+# delete contact
 def delete(username, contacts):
     for i in contacts:
         if i.get("name") == username:
@@ -30,6 +34,7 @@ def delete(username, contacts):
     return contacts
 
 def main():
+    # open csv and split into lines
     with open('contacts.csv', 'r') as file:
         lines = file.read().split('\n')
 
@@ -44,6 +49,7 @@ def main():
         contacts.append(row)
 
     while True:
+        # get input
         username = input("Please enter the name or type 'quit': ").strip().capitalize()
         if username == "Quit":
             break

@@ -2,6 +2,7 @@
 
 import string
 
+# words to ignore
 stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves',
              'you', "you're", "you've", "you'll", "you'd", 'your', 'yours',
              'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she',
@@ -26,10 +27,12 @@ stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves',
              'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn',
              "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
 
+# open file, change comma separated string into a list
 translator = str.maketrans("", "", string.punctuation)
 with open('a-modest-proposal.txt') as f:
 	word_list = f.read().lower().translate(translator).split()
 
+# get common bigrams (pairs of words)
 def get_bigrams(word_list):
 	bigram_list = [(word_list[i], word_list[i + 1]) for i in range(len(word_list)-1)]
 	bigram_list = [i for i in bigram_list if i[0] not in stopwords and i[1] not in stopwords]

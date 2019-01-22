@@ -2,6 +2,7 @@
 
 import string
 
+# words to ignore
 stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves',
              'you', "you're", "you've", "you'll", "you'd", 'your', 'yours',
              'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she',
@@ -26,10 +27,12 @@ stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves',
              'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn',
              "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
 
+# open file, change comma separated string into a list
 translator = str.maketrans("", "", string.punctuation)
 with open('heart-of-darkness.txt') as f:
 	word_list = f.read().lower().translate(translator).split()
 
+# get frequency of word use, return 10 most frequent
 def get_word_count(word_list):
     word_count = [word_list.count(i) for i in word_list]
     word_dict = dict(zip(word_list, word_count))
