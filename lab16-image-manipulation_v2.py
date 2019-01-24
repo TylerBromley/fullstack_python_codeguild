@@ -23,6 +23,5 @@ for i in range(width):
 
         pixels[i, j] = (r, g, b)
 
-
 img.show()
 
